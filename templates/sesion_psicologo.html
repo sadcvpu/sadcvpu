@@ -1,0 +1,35 @@
+{% extends "layout_psicologo.html" %} {% block title %} Sesion Psicologo {%
+endblock title %} {% block content %}
+
+<h1>
+  Bienvenido Psicólogo <b>{{session["nombre"] + ', ' + session["apellido"]}}</b>
+</h1>
+
+
+<div class="sp_pie">
+  <h3>Gráfico Circular</h3>
+  <img src="https://media.discordapp.net/attachments/878429267229290537/967361842496274523/unknown.png" alt="Imagen de gráfico Circular referencial" ></img>
+
+  <p>En el gráfico circular podrás observar el
+    porcentaje total de alumnos que presentan
+    alguna variable psicológica en un
+    determinado tiempo.
+    Podrás ver el el gráfico dando clic al
+    siquiente enlace <a href="/graf_psi_pie/">Ver Gráfico</a></p>
+
+</div>
+
+<div class="sp_line">
+  <h3>Gráfico Lineal</h3>
+  <img src="https://cdn.discordapp.com/attachments/878429267229290537/967361700095492116/unknown.png" alt="Imagen de gráfico lineal referencial" ></img>
+
+  <p>En esta gráfica podrás ver la evolución de
+    cada variable psicologica, dentro de la
+    población universitaria, según: ciclo, sexo
+    sede carera y edad de los alumnos
+      Podrás ver el gráfico dando clic al siguiente
+      enlace <a href="/graf_psi_line/">Ver Gráfico</a></p>
+
+</div>
+
+{% endblock %}

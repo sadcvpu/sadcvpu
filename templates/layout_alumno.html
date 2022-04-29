@@ -1,0 +1,76 @@
+{% extends "layout.html" %} {% block body %}
+<div class="container-fluid">
+  <div class="row flex-nowrap">
+    <div
+      class="shadow col-auto col-md-3 col-xl-2 px-0"
+      style="background-color: whitesmoke"
+    >
+      {% block navbar %}
+
+      <div
+        class="list-group d-flex flex-column align-items-center align-items-sm-start min-vh-100"
+        role="tablist"
+      >
+        <a
+          class="list-group-item list-group-item-action"
+          href="{{ url_for('estado_mental') }}"
+          role="tab"
+          >Estado Mental</a
+        >
+        <a
+          class="list-group-item list-group-item-action  dropdown-toggle"
+          data-bs-toggle="dropdown"
+          href="#"
+          role="button"
+          aria-expanded="false"
+          >Test Psicológicos</a
+        >
+        <ul class="dropdown-menu">
+          <li>
+            <a class="dropdown-item" href="{{ url_for('test_ansiedad') }}"
+              >Test de Ansiedad</a
+            >
+          </li>
+          <li>
+            <a class="dropdown-item" href="{{ url_for('test_depresion') }}"
+              >Test de Depresión</a
+            >
+          </li>
+          <li>
+            <a class="dropdown-item" href="{{ url_for('test_estres') }}"
+              >Test de Estrés</a
+            >
+          </li>
+        </ul>
+        <a
+          class="list-group-item list-group-item-action"
+          href="{{ url_for('buscar_cita') }}"
+          role="tab"
+          >Registrar Cita</a
+        >
+
+        <a
+          class="list-group-item list-group-item-action"
+          href="{{ url_for('buscar_actividad') }}"
+          role="tab"
+          >Actividades</a
+        >
+        <a
+          class="list-group-item list-group-item-action"
+          href="{{ url_for('editar_perfil_a') }}"
+          role="tab"
+          >Editar Perfil</a
+        >
+        <a
+          class="list-group-item list-group-item-action"
+          href="{{ url_for('logout') }}"
+          role="tab"
+          >Salir</a
+        >
+      </div>
+      {% endblock %}
+    </div>
+    <div class="col py-3">{% block content %} {% endblock %}</div>
+  </div>
+</div>
+{% endblock %}

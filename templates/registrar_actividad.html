@@ -1,0 +1,116 @@
+{% extends "layout_psicologo.html" %} {% block title %} Registro de Actividades
+{% endblock title %} {% block content %} {% with messages =
+get_flashed_messages() %} {% if messages %} {% for message in messages %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  {{ message }}
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+{% endfor %} {% endif %} {% endwith %} {% if error %}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  {{ error }}
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+{% endif %}
+
+<h1>Registro de Actividades</h1>
+<form action="{{ url_for('registrar_actividad') }}" method="POST">
+  <div class="form-group">
+    <label for="start">Nombre Actividad:</label>
+    <input
+      type="text"
+      name="nom_actividad"
+      placeholder="nombre actividad"
+      autofocus
+    />
+  </div>
+
+  <div class="form-group">
+    <label>Descripcion:</label>
+    <textarea
+      name="desc_actividad"
+      rows="4"
+      cols="50"
+      placeholder="descripcion"
+    ></textarea>
+  </div>
+
+  <div class="form-group">
+    <label>Fecha:</label>
+    <input
+      type="date"
+      name="fecha"
+      value="{{ current_date.strftime('%Y-%m-%d') }}"
+      min="2022-01-01"
+      max="2022-12-31"
+      id="fecha"
+    />
+    <input
+      class="form-check-input"
+      name="check_fecha"
+      type="checkbox"
+      id="check-fecha"
+      onclick="{
+        var x = document.getElementById('fecha').disabled;
+        if (x == false) {
+          document.getElementById('fecha').disabled = true;
+          //document.getElementById('fecha').value = null;
+        }
+        else {
+          document.getElementById('fecha').disabled = false;
+        }
+      }"
+    />
+    <label class="form-check-label" for="check-fecha"> Sin fecha? </label>
+  </div>
+
+  <div class="form-group">
+    <button class="btn btn-primary">Registrar</button>
+  </div>
+</form>
+
+<table class="table table-striped table-hover table-bordered table-sm bg-white">
+  <thead>
+    <tr>
+      <td>Nombre de la actividad</td>
+      <td>Descripcion</td>
+      <td>Fecha</td>
+      <td>Variable</td>
+      <td>Acciones</td>
+    </tr>
+  </thead>
+  <tbody>
+    {% for actividad in lista_actividades %}
+    <tr>
+      <td>{{ actividad['nom_actividad'] }}</td>
+      <td>{{ actividad['descripcion'] }}</td>
+      <td>
+        {% if actividad['fecha'] %} {{ actividad['fecha'].strftime('%d/%m/%Y')
+        }} {% else %} No tiene fecha {%endif %}
+      </td>
+      <td>{{ actividad['variable'] }}</td>
+      <td>
+        <form action="{{ url_for('eliminar_actividad') }}" method="POST">
+          <input
+            type="hidden"
+            id="id_actividad"
+            name="id_actividad"
+            value="{{ actividad['id_actividad'] }}"
+          />
+          <button class="btn btn-secondary">Eliminar</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

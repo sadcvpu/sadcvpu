@@ -1,0 +1,272 @@
+{% extends "layout_alumno.html" %}
+
+{% block title %}
+    Sesion Alumno
+{% endblock title %}
+
+{% block content %}
+
+    <h1>Bienvenido alumno <b>{{session["nombre"] + ', ' + session["apellido"]}}</b></h1>
+
+    <div class="row">
+      <div class="col-4">
+        <div class="list-group" id="list-tab" role="tablist">
+            <a class="list-group-item list-group-item-action active" data-bs-toggle="list" href="#estado_mental_show" role="tab">Estado Mental</a>
+            <a class="list-group-item dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Test Psicológicos</a>
+                <ul class="dropdown-menu">
+                  <li><a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#test_ansiedad_show" role="tab">Test de Ansiedad</a></li>
+                  <li><a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#test_depresion_show" role="tab" >Test de Depresión</a></li>
+                  <li><a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#test_estres_show" role="tab" >Test de Estrés</a></li>
+                </ul>
+            <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#registrar_cita_show" role="tab">Registrar Cita</a>
+            <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#actividades_show" role="tab">Actividades</a>
+            <hr>
+            <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#editar_perfil" role="tab" >Editar Perfil</a>
+            <a class="list-group-item list-group-item-action" href="/logout" >Cerrar Sesión</a>
+
+        </div>
+      </div>
+      <div class="col-8">
+          <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="estado_mental_show" role="tabpanel" aria-labelledby="list-home-list">
+                Estado Mental
+            </div>
+            <div class="tab-pane fade" id="test_ansiedad_show" role="tabpanel" >
+              <h1>Test de Ansiedad</h1>
+              <h2>Descripción</h2>
+              <p>Por favor lea las siguientes afirmaciones y coloque un círculo alrededor de un número (0, 1, 2, 3) que indica en
+                  qué grado le ha ocurrido a usted esta afirmación durante la semana pasada. La escala de calificación
+                  es la siguiente:  <br> 0: No me ha ocurrido <br> 1: Me ha ocurrido un poco, o durante parte del tiempo<br>
+                  2: Me ha ocurrido bastante, o durante una buena parte del tiempo<br> 3: Me ha ocurrido mucho,
+                  o la mayor parte del tiempo. </p>
+          
+              <div class="test_ans">
+                  <form class=form action="/test_ansiedad" method="POST">
+                      <div class="radio">
+                          <h3>Me di cuenta que tenía la boca seca </h3>
+          
+                          <input type="radio" name="1" value="0" id="0">
+                          <label for="0">Nunca</label>
+          
+                          <input type="radio" name="1" value="1" id="1">
+                          <label for="1">A veces</label>
+          
+                          <input type="radio" name="1" value="2" id="2">
+                          <label for="2">Frecuentemente</label>
+          
+                          <input type="radio" name="1" value="3" id="3">
+                          <label for="3">Siempre</label>
+                      </div>
+          
+                      <div class="radio">
+                          <h3>Se me hizo difícil respirar  </h3>
+          
+                          <input type="radio" name="2" value="0" id="4">
+                          <label for="4">Nunca</label>
+          
+                          <input type="radio" name="2" value="1" id="5">
+                          <label for="5">A veces</label>
+          
+                          <input type="radio" name="2" value="2" id="6">
+                          <label for="6">Frecuentemente</label>
+          
+                          <input type="radio" name="2" value="3" id="7">
+                          <label for="7">Siempre</label>
+                      </div>
+          
+                      <div class="radio">
+                          <h3>Sentí que mis manos temblaban </h3>
+          
+                          <input type="radio" name="3" value="0" id="8">
+                          <label for="8">Nunca</label>
+          
+                          <input type="radio" name="3" value="1" id="9">
+                          <label for="9">A veces</label>
+          
+                          <input type="radio" name="3" value="2" id="10">
+                          <label for="10">Frecuentemente</label>
+          
+                          <input type="radio" name="3" value="3" id="11">
+                          <label for="11">Siempre</label>
+                      </div>
+          
+                      <div class="radio">
+                          <h3>Estaba preocupado por situaciones en las cuales podía tener
+                              pánico o en las que podría hacer el ridículo </h3>
+          
+                          <input type="radio" name="4" value="0" id="12">
+                          <label for="12">Nunca</label>
+          
+                          <input type="radio" name="4" value="1" id="13">
+                          <label for="13">A veces</label>
+          
+                          <input type="radio" name="4" value="2" id="14">
+                          <label for="14">Frecuentemente</label>
+          
+                          <input type="radio" name="4" value="3" id="15">
+                          <label for="15">Siempre</label>
+                      </div>
+          
+                      <div class="radio">
+                          <h3>Sentí que estaba al punto de pánico </h3>
+          
+                          <input type="radio" name="5" value="0" id="16">
+                          <label for="16">Nunca</label>
+          
+                          <input type="radio" name="5" value="1" id="17">
+                          <label for="17">A veces</label>
+          
+                          <input type="radio" name="5" value="2" id="18">
+                          <label for="18">Frecuentemente</label>
+          
+                          <input type="radio" name="5" value="3" id="19">
+                          <label for="19">Siempre</label>
+                      </div>
+          
+                      <div class="radio">
+                          <h3>Sentí los latidos de mi corazón a pesar de no haber hecho ningún esfuerzo físico </h3>
+          
+                          <input type="radio" name="6" value="0" id="20">
+                          <label for="20">Nunca</label>
+          
+                          <input type="radio" name="6" value="1" id="21">
+                          <label for="21">A veces</label>
+          
+                          <input type="radio" name="6" value="2" id="22">
+                          <label for="22">Frecuentemente</label>
+          
+                          <input type="radio" name="6" value="3" id="23">
+                          <label for="23">Siempre</label>
+                      </div>
+          
+                      <div class="radio">
+                          <h3>Tuve miedo sin razón</h3>
+          
+                          <input type="radio" name="7" value="0" id="24">
+                          <label for="24">Nunca</label>
+          
+                          <input type="radio" name="7" value="1" id="25">
+                          <label for="25">A veces</label>
+          
+                          <input type="radio" name="7" value="2" id="26">
+                          <label for="26">Frecuentemente</label>
+          
+                          <input type="radio" name="7" value="3" id="27">
+                          <label for="27">Siempre</label>
+                      </div>
+          
+          
+                      <div class="form-group">
+                          <button class="boton">Enviar</button>
+                      </div>
+          
+                  </form>
+          
+              </div>
+              <hr>
+              <p>Puntos de corte comúnmente utilizados:<br>4 ansiedad leve<br>5-7 ansiedad moderada<br>8-9 ansiedad severa
+              <br>10 o más, ansiedad extremadamente severa</p>
+          
+              <a href="/test_psicologico_main">Volver</a>
+            </div>
+            <div class="tab-pane fade" id="test_depresion_show" role="tabpanel" >
+                         TD
+            </div>
+            <div class="tab-pane fade" id="test_estres_show" role="tabpanel" >
+                         TE
+            </div>
+            <div class="tab-pane fade" id="registrar_cita_show" role="tabpanel" >
+              {% with messages = get_flashed_messages()  %}
+              {% if messages %}
+                  {% for message in messages %}
+                      <div class="alert alert-success alert-dismissible fade show" role="alert">
+                          {{ message }}
+                          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>
+                  {% endfor %}
+              {% endif %}
+          {% endwith %}
+      
+          <h1>Registro de cita</h1>
+          <h2>Para registrar una cita, por favor seleccione un horario</h2>
+          <form action="{{ url_for('buscar_cita') }}" method="POST">
+              <div class="form-group">
+                  <label for="start">Fecha:</label>
+                  <input type="date" id="start" name="fecha"
+                      value="2022-03-27"
+                      min="2022-01-01" max="2022-12-31">
+              </div>
+      
+              <div class="form-group">
+                  <label>Hora:</label>
+                  <select class="form-select" name ="hora">
+                      {% for tupla_hora in hora_citas %}
+                          <option value="{{ tupla_hora.1 }}">{{ tupla_hora.0 }}</option>
+                      {% endfor %}
+                  </select>
+              </div>
+      
+              <div class="form-group">
+                  <button class="boton">Buscar</button>
+              </div>
+      
+          </form>
+      
+          <table class="table table-striped table-hover table-bordered table-sm bg-white">
+              <thead>
+              <tr>
+                  <td>Psicologo</td>
+                  <td>Dia de cita</td>
+                  <td>Hora Inicio</td>
+                  <td>Hora Fin</td>
+                  <td>Acciones</td>
+              </tr>
+              </thead>
+              <tbody>
+              {% for resultado in resultado_cita %}
+                  <tr>
+                      <td>{{ resultado['nombres'] }}</td>
+                      <td>{{ resultado['dia'].strftime('%d/%m/%Y') }}</td>
+                      <td>{{ resultado['h_inicio'] }}</td>
+                      <td>{{ resultado['h_fin'] }}</td>
+                      <td>
+                          <form action="{{ url_for('registrar_cita') }}" method="POST">
+                              <input type="hidden" id="id_horario" name="id_horario" value="{{ resultado['id_horario'] }}">
+                              <button class="btn btn-secondary">Reservar cita</button>
+                          </form>
+                      </td>
+                  </tr>
+              {% endfor %}
+              </tbody>
+          </table>
+            </div>
+            <div class="tab-pane fade" id="actividades_show" role="tabpanel" >
+                Actividades
+            </div>
+            <div class="tab-pane fade" id="editar_perfil" role="tabpanel" >
+                Editar Perfil
+            </div>
+          </div>
+      </div>
+    </div>
+
+<hr>
+
+     <ul class="nav flex-column">
+          <li class="nav-item"><a class="nav-link" href="/estado_mental">Estado Mental</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Test Psicológicos</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/test_ansiedad">Test de Ansiedad</a></li>
+              <li><a class="dropdown-item" href="/test_depresion">Test de Depresión</a></li>
+              <li><a class="dropdown-item" href="/test_estres">Test de Estrés</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="/buscar_cita">Registrar Cita</a></li>
+          <li class="nav-item"><a class="nav-link" href="/sesion_alumno">Actividades</a></li>
+          <li class="nav-item"><a class="nav-link" href="/editar_perfil">Editar Perfil</a></li>
+          <li class="nav-item"><a class="nav-link" href="/logout">Cerrar Sesión</a></li>
+     </ul>
+
+{% endblock %}
+

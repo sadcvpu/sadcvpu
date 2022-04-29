@@ -1,0 +1,229 @@
+{% extends "layout_alumno.html" %} {% block title %} Test de Ansiedad {%
+endblock title %} {% block content %}
+<h1>Test de Ansiedad</h1>
+<h2>Descripción</h2>
+<p>
+  Por favor lea las siguientes afirmaciones y coloque un círculo alrededor de un
+  número (0, 1, 2, 3) que indica en qué grado le ha ocurrido a usted esta
+  afirmación durante la semana pasada. La escala de calificación es la
+  siguiente: <br />
+  0: No me ha ocurrido <br />
+  1: Me ha ocurrido un poco, o durante parte del tiempo<br />
+  2: Me ha ocurrido bastante, o durante una buena parte del tiempo<br />
+  3: Me ha ocurrido mucho, o la mayor parte del tiempo.
+</p>
+
+<div class="test p-2">
+  {% if error %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {{ error }}
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+  {% endif %}
+  <form class="form" action="/test_ansiedad" method="POST">
+    <div class="radio mb-3">
+      <h3>Me di cuenta que tenía la boca seca</h3>
+      <div class="row">
+        <div class="col-2">
+          <input type="radio" name="1" value="0" id="0" class="me-2" />
+          <label for="0">Nunca</label>
+        </div>
+
+        <div class="col-2">
+          <input type="radio" name="1" value="1" id="1" class="me-2" />
+          <label for="1">A veces</label>
+        </div>
+
+        <div class="col-2">
+          <input type="radio" name="1" value="2" id="2" class="me-2" />
+          <label for="2">Frecuentemente</label>
+        </div>
+
+        <div class="col-2">
+          <input type="radio" name="1" value="3" id="3" class="me-2" />
+          <label for="3">Siempre</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="radio mb-3">
+      <h3>Se me hizo difícil respirar</h3>
+
+      <div class="row">
+        <div class="col-2">
+          <input type="radio" name="2" value="0" id="4" class="me-2" />
+          <label for="4">Nunca</label>
+        </div>
+
+        <div class="col-2">
+          <input type="radio" name="2" value="1" id="5" class="me-2" />
+          <label for="5">A veces</label>
+        </div>
+
+        <div class="col-2">
+          <input type="radio" name="2" value="2" id="6" class="me-2" />
+          <label for="6">Frecuentemente</label>
+        </div>
+
+        <div class="col-2">
+          <input type="radio" name="2" value="3" id="7" class="me-2" />
+          <label for="7">Siempre</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="radio mb-3">
+      <h3>Sentí que mis manos temblaban</h3>
+
+      <div class="row">
+        <div class="col-2">
+          <input type="radio" name="3" value="0" id="8" class="me-2" />
+          <label for="8">Nunca</label>
+        </div>
+
+        <div class="col-2">
+          <input type="radio" name="3" value="1" id="9" class="me-2" />
+          <label for="9">A veces</label>
+        </div>
+
+        <div class="col-2">
+          <input type="radio" name="3" value="2" id="10" class="me-2" />
+          <label for="10">Frecuentemente</label>
+        </div>
+
+        <div class="col-2">
+          <input type="radio" name="3" value="3" id="11" class="me-2" />
+          <label for="11">Siempre</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="radio mb-3">
+      <h3>
+        Estaba preocupado por situaciones en las cuales podía tener pánico o en
+        las que podría hacer el ridículo
+      </h3>
+
+      <div class="row">
+        <div class="col-2">
+          <input type="radio" name="4" value="0" id="12" class="me-2" />
+          <label for="12">Nunca</label>
+        </div>
+
+        <div class="col-2">
+          <input type="radio" name="4" value="1" id="13" class="me-2" />
+          <label for="13">A veces</label>
+        </div>
+
+        <div class="col-2">
+          <input type="radio" name="4" value="2" id="14" class="me-2" />
+          <label for="14">Frecuentemente</label>
+        </div>
+
+        <div class="col-2">
+          <input type="radio" name="4" value="3" id="15" class="me-2" />
+          <label for="15">Siempre</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="radio mb-3">
+      <h3>Sentí que estaba al punto de pánico</h3>
+
+      <div class="row">
+        <div class="col-2">
+          <input type="radio" name="5" value="0" id="16" class="me-2" />
+          <label for="16">Nunca</label>
+        </div>
+
+        <div class="col-2">
+          <input type="radio" name="5" value="1" id="17" class="me-2" />
+          <label for="17">A veces</label>
+        </div>
+
+        <div class="col-2">
+          <input type="radio" name="5" value="2" id="18" class="me-2" />
+          <label for="18">Frecuentemente</label>
+        </div>
+
+        <div class="col-2">
+          <input type="radio" name="5" value="3" id="19" class="me-2" />
+          <label for="19">Siempre</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="radio mb-3">
+      <h3>
+        Sentí los latidos de mi corazón a pesar de no haber hecho ningún
+        esfuerzo físico
+      </h3>
+
+      <div class="row">
+        <div class="col-2">
+          <input type="radio" name="6" value="0" id="20" class="me-2" />
+          <label for="20">Nunca</label>
+        </div>
+
+        <div class="col-2">
+          <input type="radio" name="6" value="1" id="21" class="me-2" />
+          <label for="21">A veces</label>
+        </div>
+
+        <div class="col-2">
+          <input type="radio" name="6" value="2" id="22" class="me-2" />
+          <label for="22">Frecuentemente</label>
+        </div>
+
+        <div class="col-2">
+          <input type="radio" name="6" value="3" id="23" class="me-2" />
+          <label for="23">Siempre</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="radio mb-3">
+      <h3>Tuve miedo sin razón</h3>
+
+      <div class="row">
+        <div class="col-2">
+          <input type="radio" name="7" value="0" id="24" class="me-2" />
+          <label for="24">Nunca</label>
+        </div>
+
+        <div class="col-2">
+          <input type="radio" name="7" value="1" id="25" class="me-2" />
+          <label for="25">A veces</label>
+        </div>
+
+        <div class="col-2">
+          <input type="radio" name="7" value="2" id="26" class="me-2" />
+          <label for="26">Frecuentemente</label>
+        </div>
+
+        <div class="col-2">
+          <input type="radio" name="7" value="3" id="27" class="me-2" />
+          <label for="27">Siempre</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row justify-content-center">
+      <button class="col-auto btn btn-primary">Enviar</button>
+    </div>
+  </form>
+</div>
+<hr />
+<p>
+  Puntos de corte comúnmente utilizados:<br />4 ansiedad leve<br />5-7 ansiedad
+  moderada<br />8-9 ansiedad severa <br />10 o más, ansiedad extremadamente
+  severa
+</p>
+
+<a href="/test_psicologico_main">Volver</a>
+{% endblock %}

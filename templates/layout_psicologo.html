@@ -1,0 +1,50 @@
+{% extends "layout.html" %} {% block body %}
+<div class="container-fluid">
+  <div class="row flex-nowrap">
+    <div
+      class="shadow col-auto col-md-3 col-xl-2 px-0"
+      style="background-color: whitesmoke"
+    >
+      {% block navbar %}
+
+      <div
+        class="list-group d-flex flex-column align-items-center align-items-sm-start min-vh-100"
+        role="tablist"
+      >
+        <a
+          class="list-group-item list-group-item-action"
+          href="{{ url_for('sesion_psicologo') }}"
+          role="tab"
+          >Datos Generales de Alumnos</a
+        >
+        <a
+          class="list-group-item list-group-item-action"
+          href="{{ url_for('registrar_horario') }}"
+          role="tab"
+          >Registrar Horario</a
+        >
+        <a
+          class="list-group-item list-group-item-action"
+          href="{{ url_for('registrar_actividad') }}"
+          role="tab"
+          >Registrar Actividad</a
+        >
+        <a
+          class="list-group-item list-group-item-action"
+          href="{{ url_for('listar_citas') }}"
+          role="tab"
+          >Listar citas</a
+        >
+        <a
+          class="list-group-item list-group-item-action"
+          href="{{ url_for('logout') }}"
+          role="tab"
+          >Salir</a
+        >
+      </div>
+      {% endblock %}
+    </div>
+    <div class="col py-3">{% block content %} {% endblock %}</div>
+  </div>
+</div>
+{% endblock %}

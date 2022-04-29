@@ -1,0 +1,56 @@
+{% extends "layout_psicologo.html" %} {% block title %} Registro de Horario {%
+endblock title %} {% block content %} {% with messages = get_flashed_messages()
+%} {% if messages %} {% for message in messages %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  {{ message }}
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+{% endfor %} {% endif %} {% endwith %} {% if error %}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  {{ error }}
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+{% endif %}
+
+<table class="table table-striped table-hover table-bordered table-sm bg-white">
+  <thead>
+    <tr>
+      <td>Dia</td>
+      <td>Hora</td>
+      <td>Alumno</td>
+      <td>Acciones</td>
+    </tr>
+  </thead>
+  <tbody>
+    {% for cita in lista_citas %}
+    <tr>
+      <td>{{ cita['dia'].strftime('%d/%m/%Y') }}</td>
+      <td>{{ cita['hora'] }}</td>
+      <td>{{ cita['apellidos'] + ', ' + cita['nombres'] }}</td>
+      <td>
+        <!-- <form action="{{ url_for('registrar_cita') }}" method="POST"> -->
+        <form>
+          <input
+            type="hidden"
+            id="id_alumno"
+            name="id_alumno"
+            value="{{ cita['id_alumno'] }}"
+          />
+          <button class="btn btn-secondary">Ver dashboard</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

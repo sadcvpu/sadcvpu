@@ -1,0 +1,63 @@
+{% extends "layout.html" %} {% block title %} Login {% endblock title %} {%
+block body %}
+<div class="container login-card row">
+  {% if error %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {{ error }}
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+  {% endif %}
+  <div class="justify-content-center">
+    <form class="form" action="/login" method="POST">
+      <div class="col-auto text-center">
+        <img
+          src="{{url_for('static', filename='imagenes/Logo2.jpg') }}"
+          alt="Logo 2"
+        />
+        <h1 class="mt-0">Bienvenido!</h1>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          type="email"
+          class="form-control"
+          placeholder="email@example.com"
+          name="email"
+          id="email"
+        />
+        <label for="email">Email</label>
+      </div>
+
+      <div class="form-floating mb-3">
+        <input
+          type="password"
+          class="form-control"
+          placeholder="*********"
+          name="contrasena"
+          id="contrasena"
+        />
+        <label for="contrasena">Contraseña</label>
+      </div>
+
+      <div class="row justify-content-center col-auto">
+        <button class="btn login-btn d-block mx-auto btn-primary">
+          Iniciar Sesión
+        </button>
+        <p class="p-questions-login mt-2">
+          ¿No tienes una cuenta?
+          <br />
+          Deseo crear una como
+          <a href="/registro_alumno">Alumno</a>
+          o
+          <a href="/registro_psi">Psicólogo</a>
+        </p>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

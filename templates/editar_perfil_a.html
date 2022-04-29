@@ -1,0 +1,113 @@
+{% extends "layout_alumno.html" %}
+
+{% block title %}
+    Editar Perfil Alumno
+{% endblock title %}
+
+{% block content %}
+    <div class="info_alumno">
+        <table>
+            <tr>
+                <td>Nombre(s): <b>{{alumno["nombres"]}}</b></td>
+                <td>Apellido(s): <b>{{alumno["apellidos"]}}</b></td>
+                <td>Email: <b>{{alumno["email"]}}</b></td>
+                <td>Sede: <b>{{alumno["sede"]}}</b></td>
+            </tr>
+            <tr>
+                <td>Carrera: <b>{{alumno["carrera"]}}</b></td>
+                <td>Edad: <b>{{alumno["edad"]}}</b></td>
+                <td>Ciclo: <b>{{alumno["ciclo"]}}</b></td>
+                <td>Sexo: <b>{{alumno["sexo"]}}</b></td>
+            </tr>
+        </table>    
+    </div>
+
+    <div class="registro_alumno">
+        <form class=form action="/editar_perfil_a" method="POST">
+    
+            <h3 class="form_titulo">Ingrese todos los datos a actualizar:</h3><br>
+    
+            <div class="form-group">
+                <label>Nombres:</label>
+                <input type="text" class="form-input" name="nombres">
+            </div>
+    
+            <div class="form-group">
+                <label>Apellidos:</label>
+                <input type="text" class="form-input" name="apellidos">
+            </div>
+    
+            <div class="form-group">
+                <label>Sede:</label>
+                <select class="form-select" name ="sede">
+                    <option value="" selected>Selecciona una sede</option>
+                    <option value="San Miguel">San Miguel</option>
+                    <option value="San Isidro">San Isidro</option>
+                    <option value="Monterrico">Monterrico</option>
+                    <option value="Villa">Villa</option>
+                  </select>
+            </div>
+    
+            <div class="form-group">
+                <label>Género:</label>
+                <select class="form-select" name ="sexo">
+                    <option value="" selected>Género</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                  </select>
+            </div>
+
+            <div class="form-group">
+                <label>Carrera:</label>
+                <select class="form-select" name ="carrera">
+                    <option value="" selected>Carrera</option>
+                    <option value="Ingenieria de sistemas de información">Ingenieria de sistemas de información</option>
+                    <option value="Ingenieria de sistemas de software">Ingenieria de sistemas de software</option>
+                    <option value="Ciencias de la Computación">Ciencias de la Computación</option>
+                  </select>
+            </div>
+
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="text" class="form-input" name="email">
+            </div>
+    
+            <div class="form-group">
+                <label>Ciclo:</label>
+                <select class="form-select" name ="ciclo">
+                    <option value="" selected>Ciclo</option>
+                    <option value="1ro">1ro</option>
+                    <option value="2do">2do</option>
+                    <option value="3ro">3ro</option>
+                    <option value="4to">4to</option>
+                    <option value="5to">5to</option>
+                    <option value="6to">6to</option>
+                    <option value="7mo">7mo</option>
+                    <option value="8vo">8vo</option>
+                    <option value="9no">9no</option>
+                    <option value="10mo">10mo</option>
+                  </select>
+            </div>
+
+            <div class="form-group">
+                <label>Edad:</label>
+                <input type="text" class="form-input" name="edad">
+            </div>
+
+            <div class="form-group">
+                <label>Contraseña:</label>
+                <input type="password" class="form-input" name="contrasena" disabled>
+            </div>
+    
+            <div class="form-group">
+                <button class="boton">Actualizar</button>
+            </div>
+    
+        </form>
+    
+    
+    </div>
+    
+</body>
+
+{% endblock %}

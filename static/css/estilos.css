@@ -1,0 +1,116 @@
+body {
+  background: #91e4fb;
+  font-size: 18px;
+}
+/*LOGIN*/
+.login-card {
+  margin: auto;
+  width: fit-content;
+  padding: 2.4rem;
+  background-color: #91e4fb;
+  /* border: 1px solid rgba(0, 0, 0, 0.125); */
+  border-radius: 6px;
+}
+.login-btn {
+  color: white;
+  width: 100%;
+  max-width: 229px;
+  height: 48px;
+}
+
+.p-questions-login,
+.form_titulo-login {
+  text-align: center;
+}
+
+.boton-login {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+p .form-input-login {
+  display: block;
+  margin-left: auto;
+}
+.imagen_login {
+  position: absolute;
+  top: 50%;
+  left: 70%;
+  transform: translate(30%, -50%);
+}
+
+/*EDITAR PERFIL*/
+.info_alumno table {
+  width: 100%;
+}
+.info_alumno table,
+tr,
+td {
+  border: 1px solid white;
+  border-collapse: collapse;
+}
+.info_alumno tr,
+td {
+  background-color: #96d4d4;
+}
+
+/*Barra de Navegación Lateral - Test Psi*/
+.nav-link.dropdown-toggle {
+  padding: 10px;
+  color: #212529;
+}
+
+/*Estado Mental Alumno*/
+.estado_mental_alumno {
+  width: 80%;
+  height: 30%;
+  background: white;
+}
+.estado_mental_alumno h3 {
+  text-align: center;
+  margin-top: 20px;
+}
+.estado_mental_alumno img {
+  width: 350px;
+  height: 200px;
+  float: left;
+  margin-right: 10px;
+}
+.estado_mental_alumno p {
+  font-size: 18px;
+  margin-top: 30px;
+}
+/*Sesion Psicologo*/
+.sp_pie,
+.sp_line {
+  width: 80%;
+  height: 30%;
+  background: white;
+}
+.sp_pie h3,
+.sp_line h3 {
+  text-align: center;
+  margin-top: 20px;
+}
+.sp_pie img,
+.sp_line img {
+  width: 350px;
+  height: 200px;
+  float: left;
+  margin-right: 10px;
+}
+.sp_pie p,
+.sp_line p {
+  font-size: 18px;
+  margin-top: 30px;
+}
+
+.test {
+  margin: auto;
+  width: auto;
+  padding: 2.4rem;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 6px;
+}

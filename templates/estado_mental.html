@@ -1,0 +1,29 @@
+{% extends "layout_alumno.html" %}
+
+{% block title %}
+    Estado Mental
+{% endblock title %}
+
+{% block content %}
+
+    <h1>Bienvenido alumno <b>{{session["nombre"] + ', ' + session["apellido"]}}</b></h1>
+
+    <h2>Evolución de Estado de Salud Mental</h2>
+
+    <div class="estado_mental_alumno">
+        <h3>Gráfico de Barras</h3>
+        <img src="https://cdn.discordapp.com/attachments/878429267229290537/967309535209472010/unknown.png" alt="Imagen de gráfico de barras referencial" ></img>
+
+        <p>En este gráfico podrás observar los
+            resultados obtenidos en cada uno de los test
+            psicologicos desarrollados. De esta forma
+            serás capaz de ver el cambio en tus niveles
+            de ansiedad, estrés y depresión.
+            Podrás ver el gráfico dando clic al siguiente
+            enlace <a href="/graf_barra_alumno/">Ver Gráfico</a></p>
+
+    </div>
+    
+
+
+{% endblock %}

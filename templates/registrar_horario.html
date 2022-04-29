@@ -1,0 +1,78 @@
+{% extends "layout_psicologo.html" %} {% block title %} Registro de Horario
+{%endblock title %} {% block content %} {% with messages =
+get_flashed_messages() %} {% if messages %} {% for message in messages %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  {{ message }}
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+{% endfor %} {% endif %} {% endwith %} {% if error %}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  {{ error }}
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+{% endif %}
+
+<h1>Registro de Horario</h1>
+<form action="{{ url_for('registrar_horario') }}" method="POST">
+  <div class="form-group">
+    <label for="start">Fecha:</label>
+    <input
+      type="date"
+      id="start"
+      name="fecha"
+      value="{{ current_date.strftime('%Y-%m-%d') }}"
+      min="2022-01-01"
+      max="2022-12-31"
+    />
+  </div>
+
+  <div class="form-group">
+    <label>Hora:</label>
+    <select class="form-select" name="hora">
+      {% for tupla_hora in hora_citas %}
+      <option value="{{ tupla_hora.1 }}">{{ tupla_hora.0 }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div class="form-group">
+    <button class="boton">Registrar</button>
+  </div>
+</form>
+
+<table class="table table-striped table-hover table-bordered table-sm bg-white">
+  <thead>
+    <tr>
+      <td>Psicologo</td>
+      <td>Dia de cita</td>
+      <td>Hora Inicio</td>
+      <td>Hora Fin</td>
+      <td>Estado</td>
+    </tr>
+  </thead>
+  <tbody>
+    {% for horario in resultado_horario %}
+    <tr>
+      <td>{{ horario['nombres'] }}</td>
+      <td>{{ horario['dia'].strftime('%d/%m/%Y') }}</td>
+      <td>{{ horario['h_inicio'] }}</td>
+      <td>{{ horario['h_fin'] }}</td>
+      <td>
+        {% if horario['estado'] == True %} Reservado {% else %} NO Reservado {%
+        endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

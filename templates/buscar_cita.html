@@ -1,0 +1,84 @@
+{% extends "layout_alumno.html" %} {% block title %} Buscar Cita {% endblock
+title %} {% block content %} {% with messages = get_flashed_messages() %} {% if
+messages %} {% for message in messages %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  {{ message }}
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+{% endfor %} {% endif %} {% endwith %} {% if error %}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  {{ error }}
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+{% endif %}
+<h1>Registro de cita</h1>
+<h2>Para registrar una cita, por favor seleccione un horario</h2>
+<form action="{{ url_for('buscar_cita') }}" method="POST">
+  <div class="form-group">
+    <label for="start">Fecha:</label>
+    <input
+      type="date"
+      id="start"
+      name="fecha"
+      min="2022-01-01"
+      max="2022-12-31"
+    />
+  </div>
+
+  <div class="form-group">
+    <label>Hora:</label>
+    <select class="form-select" name="hora">
+      {% for tupla_hora in hora_citas %}
+      <option value="{{ tupla_hora.1 }}">{{ tupla_hora.0 }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div class="form-group">
+    <button class="boton">Buscar</button>
+  </div>
+</form>
+
+<table class="table table-striped table-hover table-bordered table-sm bg-white">
+  <thead>
+    <tr>
+      <td>Psicologo</td>
+      <td>Dia de cita</td>
+      <td>Hora Inicio</td>
+      <td>Hora Fin</td>
+      <td>Acciones</td>
+    </tr>
+  </thead>
+  <tbody>
+    {% for resultado in resultado_cita %}
+    <tr>
+      <td>{{ resultado['nombres'] }}</td>
+      <td>{{ resultado['dia'].strftime('%d/%m/%Y') }}</td>
+      <td>{{ resultado['h_inicio'] }}</td>
+      <td>{{ resultado['h_fin'] }}</td>
+      <td>
+        <form action="{{ url_for('registrar_cita') }}" method="POST">
+          <input
+            type="hidden"
+            id="id_horario"
+            name="id_horario"
+            value="{{ resultado['id_horario'] }}"
+          />
+          <button class="btn btn-secondary">Reservar cita</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
